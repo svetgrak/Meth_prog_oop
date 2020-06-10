@@ -10,6 +10,6 @@ parallelepiped
 1
 1
 
-ball
-9.123
-5
+tetrahedron
+3.123
+7

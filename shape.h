@@ -38,3 +38,13 @@ class Parallelepiped : public Shape {
 	    void read(ifstream *in);
 	    void write(ofstream *out);
 };
+
+class Tetrahedron : public Shape {
+	private:
+		int len_side;
+	public:
+		Tetrahedron() {};
+		string get_type_shape() override;
+		void read(ifstream *in);
+	    void write(ofstream *out);
+};

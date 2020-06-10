@@ -63,3 +63,19 @@ void Parallelepiped::write(ofstream *out) {
     *out << "Edge 2: " << this->edge2 << endl;
     *out << "Edge 3: " << this->edge3 << endl;
 }
+
+string Tetrahedron::get_type_shape() {
+	return "tetrahedron";
+}
+
+void Tetrahedron::read(ifstream *in) {
+	Shape::read(in);
+	string len_s;
+	getline(*in, len_s);
+	this->len_side = stoi(len_s);
+}
+
+void Tetrahedron::write(ofstream *out) {
+	Shape::write(out);
+	*out << "Len side: " << this->len_side << endl;
+}

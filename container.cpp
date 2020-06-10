@@ -51,7 +51,9 @@ bool container::read_container(string filename) {
             shape = new Ball();
         } else if (type_shape == "parallelepiped") {
             shape = new Parallelepiped();
-        } else {
+        } else if (type_shape == "tetrahedron"){
+        	shape = new Tetrahedron();
+		}else {
             in.close();
             return false;
         }
