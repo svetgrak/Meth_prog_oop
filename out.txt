@@ -2,14 +2,17 @@ Count shapes: 3
 
 Shape: ball
 Density: 1.14
+Melting point: 100
 Radius: 2
 
 Shape: parallelepiped
 Density: 2.31
+Melting point: 100
 Edge 1: 1
 Edge 2: 1
 Edge 3: 1
 
 Shape: tetrahedron
 Density: 3.123
+Melting point: 100
 Len side: 7

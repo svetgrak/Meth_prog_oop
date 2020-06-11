@@ -8,9 +8,11 @@ using std::ofstream;
 class Shape {
 	private:
 	    float density;
+	    int melting_point;
 	public:
 	    Shape() {};
 	    float get_density();
+	    int get_melting_point();
 	    virtual string get_type_shape() = 0;
 	    virtual void read(ifstream *in);
 	    virtual void write(ofstream *out);
