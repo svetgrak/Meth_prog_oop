@@ -1,6 +1,6 @@
 3
 Sort
-ball
+All
 
 ball
 1.14
