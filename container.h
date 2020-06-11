@@ -17,4 +17,5 @@ public:
     virtual void add(Shape *shape);
     virtual bool read_container(string filename);
     virtual bool write_container(string filename);
+    virtual void sort();
 };
