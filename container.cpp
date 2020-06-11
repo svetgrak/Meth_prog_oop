@@ -42,6 +42,8 @@ bool container::read_container(string filename) {
     string row, type_shape;
     getline(in, row);
     count = stoi(row);
+    string filter_shape;
+    getline(in,filter_shape);
 
     for (int i = 0; i < count; ++i) {
         getline(in, row);          
@@ -56,7 +58,12 @@ bool container::read_container(string filename) {
             return false;
         }
         shape->read(&in);
-        this->add(shape);
+        
+        if (filter_shape == "All" or filter_shape == shape->get_type_shape()){
+        	this->add(shape);
+		}
+        
+        
     }
     in.close();
     return true;
