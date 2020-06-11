@@ -39,9 +39,17 @@ bool container::read_container(string filename) {
     }
 
     int count;
+    bool sort_shapes = false;
     string row, type_shape;
     getline(in, row);
     count = stoi(row);
+    getline(in,row);
+    
+    if (row == "Sort"){
+    	sort_shapes = true;
+	} else if (row != "No sort"){
+		return false;
+	}
 
     for (int i = 0; i < count; ++i) {
         getline(in, row);          
@@ -51,13 +59,20 @@ bool container::read_container(string filename) {
             shape = new Ball();
         } else if (type_shape == "parallelepiped") {
             shape = new Parallelepiped();
-        } else {
+        } else if (type_shape == "tetrahedron"){
+        	shape = new Tetrahedron();
+		}else {
             in.close();
             return false;
         }
         shape->read(&in);
         this->add(shape);
     }
+    
+    if (sort_shapes){
+    	this->sort();
+	}
+    
     in.close();
     return true;
 }
@@ -79,7 +94,17 @@ bool container::write_container(string filename) {
         currentFigureItem->shape->write(&out);
         currentFigureItem = currentFigureItem->next;
     }
-
     out.close();
     return true;
 }
+
+void container::sort(){
+	for(item* shape_item2 = this->first; shape_item2; shape_item2 = shape_item2->next){
+		for(item* shape_item1 = this->first; shape_item1->next; shape_item1 = shape_item1->next){
+			if (shape_item1->shape->get_volume() < shape_item2->shape->get_volume()){
+				std::iter_swap(&shape_item1->shape, &shape_item1->next->shape);
+			}
+		}
+	}
+}
+

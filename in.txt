@@ -1,15 +1,19 @@
 3
+Sort
 
 ball
 1.14
+100
 2
 
 parallelepiped
 2.31
+100
 1
-1
-1
+2
+3
 
-ball
-9.123
-5
+tetrahedron
+3.123
+100
+7
