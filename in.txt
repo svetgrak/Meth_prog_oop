@@ -3,14 +3,17 @@ Sort
 
 ball
 1.14
+100
 2
 
 parallelepiped
 2.31
+100
 1
 2
 3
 
 tetrahedron
 3.123
+100
 7

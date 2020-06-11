@@ -11,10 +11,16 @@ string Shape::get_type_shape() {
     return "Shape";
 }
 
+int Shape::get_melting_point(){
+	return this->melting_point;
+}
+
 void Shape::read(ifstream *in) {
-	string densit;
+	string densit, melt_point;
     getline(*in,densit);
-	this->density = stof(densit);       
+	this->density = stof(densit);
+	getline(*in,melt_point);
+	this->melting_point = stoi(melt_point);       
 }
 
 void Shape::write(ofstream *out) {
@@ -22,6 +28,7 @@ void Shape::write(ofstream *out) {
     *out << "Shape: " << this->get_type_shape() << endl;
     *out << "Density: " << this->get_density() << endl;
     *out << "Volume: " << this->get_volume() <<endl;
+    *out << "Melting point: " << this->get_melting_point() <<endl;
 }
 
 float Shape::get_density() {
