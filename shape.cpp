@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include "Shape.h"
+#include <math.h>
 
 using std::string;
 using std::endl;
@@ -20,6 +21,7 @@ void Shape::write(ofstream *out) {
     *out << endl; 
     *out << "Shape: " << this->get_type_shape() << endl;
     *out << "Density: " << this->get_density() << endl;
+    *out << "Volume: " << this->get_volume() <<endl;
 }
 
 float Shape::get_density() {
@@ -28,6 +30,10 @@ float Shape::get_density() {
 
 string Ball::get_type_shape() {
     return "ball";
+}
+
+float Ball::get_volume() {
+    return 3.14 * 4 * pow(this->radius, 3) / 3;
 }
 
 void Ball::read(ifstream *in) {
@@ -44,6 +50,10 @@ void Ball::write(ofstream *out) {
 
 string Parallelepiped::get_type_shape() {
     return "parallelepiped";
+}
+
+float Parallelepiped::get_volume() {
+    return this->edge1 * this->edge2 * this->edge3;
 }
 
 void Parallelepiped::read(ifstream *in) {
@@ -66,6 +76,11 @@ void Parallelepiped::write(ofstream *out) {
 
 string Tetrahedron::get_type_shape() {
 	return "tetrahedron";
+}
+
+
+float Tetrahedron::get_volume() {
+    return pow(2, 0.5) / 12 * pow(this->len_side, 3);
 }
 
 void Tetrahedron::read(ifstream *in) {
