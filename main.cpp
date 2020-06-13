@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "container.h"
+#include "unit_tests.h"
 
 using std::cout;
 using std::endl;
@@ -13,6 +14,9 @@ int main(int argc, char* argv[]) {
         cout << "Choice files." << endl;
         return -1;
     }
+    
+    unit_tests *tests = new unit_tests();
+    tests->run_tests();
 
     container *container_with_shapes = new container();
 

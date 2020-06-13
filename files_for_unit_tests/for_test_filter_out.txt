@@ -1,0 +1,13 @@
+Count shapes: 2
+
+Shape: ball
+Density: 3.123
+Volume: 267.947
+Melting point: 90
+Radius: 4
+
+Shape: ball
+Density: 1.14
+Volume: 33.4933
+Melting point: 90
+Radius: 2

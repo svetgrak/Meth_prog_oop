@@ -115,3 +115,14 @@ void container::sort(){
 	}
 }
 
+int container::get_size(){
+	return this->size;
+}
+
+item *container::get_first(){
+	return this->first;
+}
+
+item *container::get_last(){
+	return this->last;
+}
