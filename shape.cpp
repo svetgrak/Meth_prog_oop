@@ -7,6 +7,9 @@ using std::string;
 using std::endl;
 
 
+
+
+
 string Shape::get_type_shape() {
     return "Shape";
 }
@@ -15,12 +18,21 @@ int Shape::get_melting_point(){
 	return this->melting_point;
 }
 
-void Shape::read(ifstream *in) {
+bool Shape::read(ifstream *in) {
 	string densit, melt_point;
     getline(*in,densit);
-	this->density = stof(densit);
+    try{
+		this->density = stof(densit);   
+	}catch(...){
+    	return false;
+    }
 	getline(*in,melt_point);
-	this->melting_point = stoi(melt_point);       
+	try{
+		this->melting_point = stoi(melt_point);   
+	}catch(...){		
+    	return false;
+    }
+    
 }
 
 void Shape::write(ofstream *out) {
@@ -43,11 +55,19 @@ float Ball::get_volume() {
     return 3.14 * 4 * pow(this->radius, 3) / 3;
 }
 
-void Ball::read(ifstream *in) {
-    Shape::read(in);
+bool Ball::read(ifstream *in) {
+    if (Shape::read(in)!= true){
+    	return false;
+	}
     string rad;
     getline(*in, rad);
-    this->radius = stoi(rad);
+    try{
+    	this->radius = stoi(rad);
+	}catch(...){
+		return false;
+	}
+    
+    return true;
 }
 
 void Ball::write(ofstream *out) {
@@ -63,15 +83,23 @@ float Parallelepiped::get_volume() {
     return this->edge1 * this->edge2 * this->edge3;
 }
 
-void Parallelepiped::read(ifstream *in) {
-    Shape::read(in);
+bool Parallelepiped::read(ifstream *in) {
+    if(Shape::read(in)!=true){
+    	return false;
+	}
     string edg1, edg2, edg3;
     getline(*in, edg1);
     getline(*in, edg2);
     getline(*in, edg3);
-    this->edge1 = stoi(edg1);
-    this->edge2 = stoi(edg2);
-    this->edge3 = stoi(edg3);
+    try{
+    	this->edge1 = stoi(edg1);
+    	this->edge2 = stoi(edg2);
+    	this->edge3 = stoi(edg3);
+	}catch(...){
+		return false;
+	}
+    
+    return true;
 }
 
 void Parallelepiped::write(ofstream *out) {
@@ -90,11 +118,16 @@ float Tetrahedron::get_volume() {
     return pow(2, 0.5) / 12 * pow(this->len_side, 3);
 }
 
-void Tetrahedron::read(ifstream *in) {
+bool Tetrahedron::read(ifstream *in) {
 	Shape::read(in);
 	string len_s;
 	getline(*in, len_s);
-	this->len_side = stoi(len_s);
+	try{
+		this->len_side = stoi(len_s);
+	}catch(...){
+		return false;
+	}
+	return true;
 }
 
 void Tetrahedron::write(ofstream *out) {

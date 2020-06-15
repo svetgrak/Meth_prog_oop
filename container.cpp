@@ -40,9 +40,15 @@ bool container::read_container(string filename) {
 
     int count;
     bool sort_shapes = false;
-    string row, type_shape;
+    string row;
     getline(in, row);
-    count = stoi(row);
+    
+    try{
+    	count = stoi(row);
+	}catch(...){
+		return false;
+	}
+    
     getline(in,row);
     
     if (row == "Sort"){
@@ -50,31 +56,36 @@ bool container::read_container(string filename) {
 	} else if (row != "No sort"){
 		return false;
 	}
+	
     string filter_shape;
     getline(in,filter_shape);
-
-    for (int i = 0; i < count; ++i) {
-        getline(in, row);          
-        getline(in, type_shape);    
-        Shape *shape;
-        if (type_shape == "ball") {
-            shape = new Ball();
-        } else if (type_shape == "parallelepiped") {
-            shape = new Parallelepiped();
-        } else if (type_shape == "tetrahedron"){
-        	shape = new Tetrahedron();
-		}else {
-            in.close();
-            return false;
-        }
-        shape->read(&in);
-        
-        if (filter_shape == "All" or filter_shape == shape->get_type_shape()){
-        	this->add(shape);
-		}
-        
-        
-    }
+    if (filter_shape == "All" or filter_shape == "ball" or filter_shape == "parallelepiped" or filter_shape == "tetrahedron"){
+    	for (int i = 0; i < count; ++i) {
+    		string type_shape;
+	        getline(in, row);          
+	        getline(in, type_shape);    
+	        Shape *shape;
+	        if (type_shape == "ball") {
+	            shape = new Ball();
+	        } else if (type_shape == "parallelepiped") {
+	            shape = new Parallelepiped();
+	        } else if (type_shape == "tetrahedron"){
+	        	shape = new Tetrahedron();
+			}else{
+	            in.close();
+	            return false;
+	        }
+	        if (shape->read(&in) != true){
+	        	return false;
+			}
+	        
+	        if (filter_shape == "All" or filter_shape == shape->get_type_shape()){
+	        	this->add(shape);
+			}
+	}
+	}else {
+		return false;
+	}
     
     if (sort_shapes){
     	this->sort();

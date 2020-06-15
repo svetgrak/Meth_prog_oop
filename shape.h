@@ -16,7 +16,7 @@ class Shape {
 	    virtual float get_volume() = 0;
 	    int get_melting_point();
 	    virtual string get_type_shape() = 0;
-	    virtual void read(ifstream *in);
+	    virtual bool read(ifstream *in);
 	    virtual void write(ofstream *out);
 	};
 
@@ -27,7 +27,7 @@ class Ball : public Shape {
 	    Ball() {};
 	    string get_type_shape() override;
 	    float get_volume();
-	    void read(ifstream *in);
+	    bool read(ifstream *in);
 	    void write(ofstream *out);
 };
 
@@ -40,7 +40,7 @@ class Parallelepiped : public Shape {
 	    Parallelepiped() {};
 	    string get_type_shape() override;
 	    float get_volume();
-	    void read(ifstream *in);
+	    bool read(ifstream *in);
 	    void write(ofstream *out);
 };
 
@@ -51,6 +51,6 @@ class Tetrahedron : public Shape {
 		Tetrahedron() {};
 		string get_type_shape() override;
 		float get_volume();
-		void read(ifstream *in);
+		bool read(ifstream *in);
 	    void write(ofstream *out);
 };
