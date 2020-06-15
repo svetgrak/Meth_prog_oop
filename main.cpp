@@ -14,18 +14,18 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    container *container_with_shapes = new container();
+    Container *container_with_shapes = new Container();
 
     string input = argv[1];
-    bool isSuccessRead = container_with_shapes->read_container(input);
-    if (!isSuccessRead) {
+    bool is_success_read = container_with_shapes -> read_container(input);
+    if (!is_success_read) {
         cout << "Failed read." << endl;
         return -1;
     }
 
     string output = argv[2];
-    bool isSuccessWrite = container_with_shapes->write_container(output);
-    if (!isSuccessWrite) {
+    bool is_success_write = container_with_shapes -> write_container(output);
+    if (!is_success_write) {
         cout << "Failed write." << endl;
         return -1;
     }

@@ -1,19 +1,19 @@
 #include "Shape.h"
 
 
-class item {
+class Item {
 public:
     Shape *shape;
-    item *next;
+    Item *next;
 };
 
-class container {
+class Container {
 private:
     int size;
-    item *first;
-    item *last;
+    Item *first;
+    Item *last;
 public:
-    container();
+    Container();
     virtual void add(Shape *shape);
     virtual bool read_container(string filename);
     virtual bool write_container(string filename);
