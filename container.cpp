@@ -112,6 +112,9 @@ bool Container::write_container(string filename) {
         shape_item -> shape -> write(&out);
         shape_item = shape_item -> next;
     }
+    
+    this->multimethod(&out);
+    
     out.close();
     return true;
 }
@@ -122,6 +125,16 @@ void Container::sort(){
 			if (shape_item1 -> shape -> get_volume() < shape_item2 -> shape -> get_volume()){
 				std::iter_swap(&shape_item1 -> shape, &shape_item1 -> next -> shape);
 			}
+		}
+	}
+}
+
+void Container::multimethod(ofstream *out){
+	*out << endl << "Result multimethod: " << endl;
+	
+	for(Item *shape_item_1 = this->first; shape_item_1->next; shape_item_1 = shape_item_1->next) {
+		for (Item *shape_item_2 = shape_item_1->next; shape_item_2; shape_item_2 = shape_item_2->next){
+			shape_item_1->shape->multimethod(shape_item_2->shape, out);
 		}
 	}
 }

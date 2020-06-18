@@ -18,6 +18,10 @@ class Shape {
 	    virtual string get_type_shape() = 0;
 	    virtual bool read(ifstream *in);
 	    virtual void write(ofstream *out);
+	    virtual void multimethod(Shape *new_shape, ofstream *out);
+	    virtual void mm_ball(ofstream *out);
+	    virtual void mm_parallelepiped(ofstream *out);
+	    virtual void mm_tetrahedron(ofstream *out);
 	};
 
 class Ball : public Shape {
@@ -29,6 +33,10 @@ class Ball : public Shape {
 	    float get_volume();
 	    bool read(ifstream *in);
 	    void write(ofstream *out);
+	    void multimethod(Shape *new_shape, ofstream *out);
+	    void mm_ball(ofstream *out);
+	    void mm_parallelepiped(ofstream *out);
+	    void mm_tetrahedron(ofstream *out);
 };
 
 class Parallelepiped : public Shape {
@@ -42,6 +50,10 @@ class Parallelepiped : public Shape {
 	    float get_volume();
 	    bool read(ifstream *in);
 	    void write(ofstream *out);
+	    void multimethod(Shape *new_shape, ofstream *out);
+	    void mm_ball(ofstream *out);
+	    void mm_parallelepiped(ofstream *out);
+	    void mm_tetrahedron(ofstream *out);
 };
 
 class Tetrahedron : public Shape {
@@ -53,4 +65,8 @@ class Tetrahedron : public Shape {
 		float get_volume();
 		bool read(ifstream *in);
 	    void write(ofstream *out);
+	    void multimethod(Shape *new_shape, ofstream *out);
+	    void mm_ball(ofstream *out);
+	    void mm_parallelepiped(ofstream *out);
+	    void mm_tetrahedron(ofstream *out);
 };
