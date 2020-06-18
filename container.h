@@ -18,4 +18,5 @@ public:
     virtual bool read_container(string filename);
     virtual bool write_container(string filename);
     virtual void sort();
+    virtual void multimethod(ofstream *out);
 };

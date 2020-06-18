@@ -44,6 +44,22 @@ float Shape::get_density() {
     return this -> density;
 }
 
+void Shape::multimethod(Shape *new_shape, ofstream *out){
+	*out << "Unknown types" << endl;
+}
+
+void Shape::mm_ball(ofstream *out){
+	*out << "BALL and unknown type" << endl;
+}
+
+void Shape::mm_parallelepiped(ofstream *out){
+	*out << "PARALLELEPIPED and unknown type" << endl;
+}
+
+void Shape::mm_tetrahedron(ofstream *out){
+	*out << "TETRAHEDRON and unknown type" << endl;
+}
+
 string Ball::get_type_shape() {
     return "Ball";
 }
@@ -70,6 +86,22 @@ bool Ball::read(ifstream *in) {
 void Ball::write(ofstream *out) {
     Shape::write(out);
     *out << "Radius: " << this -> radius << endl;
+}
+
+void Ball::multimethod(Shape *new_shape, ofstream *out){
+	new_shape->mm_ball(out);
+}
+
+void Ball::mm_ball(ofstream *out){
+	*out << "BALL and BALL" << endl;
+}
+
+void Ball::mm_parallelepiped(ofstream *out){
+	*out << "PARALLELEPIPED and BALL" << endl;
+}
+
+void Ball::mm_tetrahedron(ofstream *out){
+	*out << "TETRAHEDRON and BALL" << endl;
 }
 
 string Parallelepiped::get_type_shape() {
@@ -106,6 +138,22 @@ void Parallelepiped::write(ofstream *out) {
     *out << "Edge 3: " << this -> edge3 << endl;
 }
 
+void Parallelepiped::multimethod(Shape *new_shape, ofstream *out){
+	new_shape->mm_parallelepiped(out);
+}
+
+void Parallelepiped::mm_ball(ofstream *out){
+	*out << "BALL and PARALLELEPIPED" << endl;
+}
+
+void Parallelepiped::mm_parallelepiped(ofstream *out){
+	*out << "PARALLELEPIPED and PARALLELEPIPED" << endl;
+}
+
+void Parallelepiped::mm_tetrahedron(ofstream *out){
+	*out << "TETRAHEDRON and PARALLELEPIPED" << endl;
+}
+
 string Tetrahedron::get_type_shape() {
 	return "Tetrahedron";
 }
@@ -130,4 +178,20 @@ bool Tetrahedron::read(ifstream *in) {
 void Tetrahedron::write(ofstream *out) {
 	Shape::write(out);
 	*out << "Len side: " << this -> len_side << endl;
+}
+
+void Tetrahedron::multimethod(Shape *new_shape, ofstream *out){
+	new_shape->mm_tetrahedron(out);
+}
+
+void Tetrahedron::mm_ball(ofstream *out){
+	*out << "BALL and TETRAHEDRON" << endl;
+}
+
+void Tetrahedron::mm_parallelepiped(ofstream *out){
+	*out << "PARALLELEPIPED and TETRAHEDRON" << endl;
+}
+
+void Tetrahedron::mm_tetrahedron(ofstream *out){
+	*out << "TETRAHEDRON and TETRAHEDRON" << endl;
 }
